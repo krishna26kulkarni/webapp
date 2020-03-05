@@ -11,7 +11,6 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - docker --version
-      - systemctl status docker
       - $(aws ecr get-login --region us-east-1 --no-include-email)
       - REPOSITORY_URI=165920280200.dkr.ecr.us-east-1.amazonaws.com/webapp
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -23,6 +22,7 @@ phases:
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
+    run-as: root
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
