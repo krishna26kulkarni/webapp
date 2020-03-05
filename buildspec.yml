@@ -13,8 +13,7 @@ phases:
       - docker --version
       - $(aws ecr get-login --region us-east-1 --no-include-email)
       - REPOSITORY_URI=165920280200.dkr.ecr.us-east-1.amazonaws.com/webapp
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - IMAGE_TAG=latest
   build:
     commands:
       - echo Build started on `date`
