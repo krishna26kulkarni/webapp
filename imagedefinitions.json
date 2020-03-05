@@ -13,7 +13,7 @@
             "hostPort": 8282
           }
         ],
-        "memory": 512,
+        "memory": 256,
         "essential": true
       }
     ]
