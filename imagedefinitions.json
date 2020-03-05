@@ -1,0 +1,21 @@
+{
+  "taskDefinition": {
+    "family": "webapp",
+    "containerDefinitions": [
+      {
+        "name": "webapp",
+        "image": "165920280200.dkr.ecr.us-east-1.amazonaws.com/webapp:latest",
+        "cpu": 100,
+        "portMappings": [
+          {
+            "protocol": "tcp",
+            "containerPort": 80,
+            "hostPort": 8282
+          }
+        ],
+        "memory": 512,
+        "essential": true
+      }
+    ]
+  }
+}
